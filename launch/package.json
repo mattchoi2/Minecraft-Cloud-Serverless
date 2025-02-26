@@ -1,0 +1,17 @@
+{
+  "name": "launch",
+  "version": "1.0.0",
+  "description": "This NodeJS code handles the spot Fargate container launch event.",
+  "main": "index.js",
+  "scripts": {
+    "build": "zip -r code.zip . && npm run upload"
+  },
+  "type": "module",
+  "author": "Matt Choi",
+  "license": "ISC",
+  "dependencies": {
+    "@aws-sdk/client-ec2": "^3.0.0",
+    "@aws-sdk/client-ecs": "^3.0.0",
+    "@aws-sdk/client-route-53": "^3.0.0"
+  }
+}

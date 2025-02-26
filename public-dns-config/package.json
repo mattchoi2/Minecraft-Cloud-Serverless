@@ -1,0 +1,14 @@
+{
+  "name": "text-alert",
+  "version": "1.0.0",
+  "description": "The code to run the public IP linking to the custom domain name triggered by a Cloudwatch Logs subscription filter.",
+  "main": "index.js",
+  "scripts": {
+    "build": "zip -r -q code.zip ."
+  },
+  "author": "Matt Choi",
+  "license": "ISC",
+  "dependencies": {
+    "node-gzip": "^1.1.2"
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "name": "code",
+  "version": "1.0.0",
+  "description": "This NodeJS code handles the auto-save feature of the server.",
+  "main": "index.js",
+  "scripts": {
+    "build": "zip -r -q code.zip . && npm run upload"
+  },
+  "author": "Matt Choi",
+  "license": "ISC",
+  "dependencies": {
+    "rcon-client": "^4.2.3"
+  }
+}

@@ -1,0 +1,10 @@
+.terraform
+.terraform.*
+.env
+node_modules
+*.zip
+node_modules
+.DS_Store
+provider.tf
+LOCAL.md
+backend.tf
