@@ -199,3 +199,25 @@ resource "aws_iam_role_policy_attachment" "ecs_task_ssm" {
   role       = aws_iam_role.ecs_task_role.name
   policy_arn = "arn:aws:iam::aws:policy/AmazonSSMManagedInstanceCore"
 }
+
+resource "aws_iam_policy" "ecs_task_efs_perms" {
+  name        = "${var.project_name}-efs-access"
+  path        = "/"
+  description = "This policy allows for the minecraft server to mount the EFS file system."
+
+  policy = jsonencode({
+    Version = "2012-10-17"
+    Statement = [
+      {
+        Action   = ["elasticfilesystem:ClientMount", "elasticfilesystem:ClientWrite", "elasticfilesystem:ClientRootAccess"]
+        Effect   = "Allow"
+        Resource = ["arn:aws:elasticfilesystem:${var.region}:${data.aws_caller_identity.current.account_id}:file-system/${aws_efs_file_system.minecraft.id}"]
+      }
+    ]
+  })
+}
+
+resource "aws_iam_role_policy_attachment" "ecs_task_efs_perms" {
+  role       = aws_iam_role.ecs_task_role.name
+  policy_arn = aws_iam_policy.ecs_task_efs_perms.arn
+}
